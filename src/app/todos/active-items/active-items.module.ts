@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
 import { ActiveItemsRoutingModule } from './active-items-routing.module';
 import { ActiveItemsComponent } from './active-items.component';

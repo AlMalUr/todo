@@ -1,13 +1,12 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TodosRoutingModule } from './todos-routing.module';
+import { NgModule } from '@angular/core';
 
-import { HeaderModule } from './header/header.module';
-import { FooterModule } from './footer/footer.module';
+import {ActiveItemsModule} from './active-items/active-items.module';
 import { AllItemsModule } from './all-items/all-items.module';
 import { CompletedItemsModule } from './completed-items/completed-items.module';
-import {ActiveItemsModule} from './active-items/active-items.module';
-
+import { FooterModule } from './footer/footer.module';
+import { HeaderModule } from './header/header.module';
+import { TodosRoutingModule } from './todos-routing.module';
 import { TodosComponent } from './todos.component';
 
 
