@@ -1,0 +1,14 @@
+.footer{
+  justify-content: flex-end;
+  ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    li{
+      display: inline-block;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+  }
+}
