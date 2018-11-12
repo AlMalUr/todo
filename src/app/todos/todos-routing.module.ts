@@ -7,11 +7,20 @@ import { TodosComponent } from './todos.component';
 const routes: Routes = [
   {path: '',
     component: TodosComponent,
-  children: [
-    {path: '', loadChildren: './all-items/all-items.module#AllItemsModule'},
-    {path: 'active', loadChildren: './active-items/active-items.module#ActiveItemsModule'},
-    {path: 'completed', loadChildren: './completed-items/completed-items.module#CompletedItemsModule'}
-  ]},
+    children: [
+      {
+        path: '',
+        loadChildren: './todo-items/todo-items.module#TodoItemsModule'
+      },
+      {
+        path: 'active',
+        loadChildren: './todo-items/todo-items.module#TodoItemsModule'
+      },
+      {
+        path: 'completed',
+        loadChildren: './todo-items/todo-items.module#TodoItemsModule'
+      }
+    ]},
 
 ];
 
