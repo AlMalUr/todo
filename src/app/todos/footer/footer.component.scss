@@ -1,4 +1,10 @@
 .footer{
+  display: flex;
+  border: 1px solid #222;
+  padding: 16px 20px;
+  >span {
+    margin: auto;
+  }
   justify-content: flex-end;
   ul{
     list-style-type: none;

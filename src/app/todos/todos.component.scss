@@ -4,18 +4,15 @@
   margin-left: auto;
   margin-right: auto;
 }
-.header, .footer, .content {
+.content{
+  color: orangered;
+  font-size: 30px;
+  min-height: 200px;
   display: flex;
   border: 1px solid #222;
   padding: 16px 20px;
   >span {
     margin: auto;
   }
-}
-.content{
-  min-height: 200px;
-}
-.content{
-  color: orangered;
-  font-size: 30px;
+
 }
