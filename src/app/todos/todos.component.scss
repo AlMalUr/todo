@@ -5,14 +5,8 @@
   margin-right: auto;
 }
 .content{
-  color: orangered;
-  font-size: 30px;
   min-height: 200px;
   display: flex;
   border: 1px solid #222;
-  padding: 16px 20px;
-  >span {
-    margin: auto;
-  }
-
+  padding: 20px;
 }

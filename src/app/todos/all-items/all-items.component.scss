@@ -1,0 +1,15 @@
+ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  li{
+    cursor: pointer;
+    height: 26px;
+    span{
+      display: block;
+      height: 26px;
+      line-height: 26px;
+    }
+  }
+}
