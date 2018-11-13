@@ -1,7 +1,9 @@
 <ul>
   <li *ngFor="let item of (todoItems | filterTodoItems:route)">
     <div class="title">
-      <input type="checkbox" [checked]="item.complete">
+      <input type="checkbox"
+             [checked]="item.complete"
+             (click) = "toggleTodoItemComplete(item.id)">
       {{item.title}}</div>
     <button (click)="deleteTodoItemById(item.id)">delete</button>
   </li>

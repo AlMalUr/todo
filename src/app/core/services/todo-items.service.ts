@@ -9,6 +9,9 @@ import {TodoItem} from '../models/todo-item';
 export class TodoItemsService {
   todoItems: TodoItem[] = TODO_ITEMS;
   deleteTodoItemById(id) {
-      TODO_ITEMS.splice(TODO_ITEMS.findIndex(item => item.id === id), 1);
+    TODO_ITEMS.splice(TODO_ITEMS.findIndex(item => item.id === id), 1);
+  }
+  toggleTodoItemComplete(id) {
+    TODO_ITEMS[TODO_ITEMS.findIndex(item => item.id === id)].complete = !TODO_ITEMS[TODO_ITEMS.findIndex(item => item.id === id)].complete;
   }
 }

@@ -19,6 +19,9 @@ export class TodoItemsComponent implements OnInit {
   deleteTodoItemById(id) {
     this.todoItemService.deleteTodoItemById(id);
   }
+  toggleTodoItemComplete(id) {
+    this.todoItemService.toggleTodoItemComplete(id);
+  }
   ngOnInit() {
     this.todoItems = this.todoItemService.todoItems;
     this.route = this.activeRoute.snapshot.data.title;
