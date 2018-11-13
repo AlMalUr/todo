@@ -4,7 +4,6 @@ import {ActivatedRoute} from '@angular/router';
 
 import {TodoItem} from '../../core/models/todo-item';
 import {TodoItemsService} from '../../core/services/todo-items.service';
-import {TODO_ITEMS} from '../../core/mock/mock-todo-items';
 
 @Component({
   selector: 'app-todo-items',

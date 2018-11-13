@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import {AfterContentChecked, Component} from '@angular/core';
+
+import {TodoItemsService} from '../../core/services/todo-items.service';
+
+
 
 @Component({
   selector: 'app-footer',
@@ -7,5 +11,11 @@ import { Component } from '@angular/core';
     './footer.component.scss'
   ]
 })
-export class FooterComponent {
+export class FooterComponent implements AfterContentChecked {
+  count: number;
+  constructor (private todoItemService: TodoItemsService) {
+  }
+  ngAfterContentChecked() {
+    this.count = this.todoItemService.todoItems.length;
+  }
 }

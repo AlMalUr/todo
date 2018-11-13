@@ -4,7 +4,8 @@
       <input type="checkbox"
              [checked]="item.complete"
              (click) = "toggleTodoItemComplete(item.id)">
-      {{item.title}}</div>
+      {{item.title}}
+    </div>
     <button (click)="deleteTodoItemById(item.id)">delete</button>
   </li>
 </ul>
