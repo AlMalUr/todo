@@ -12,6 +12,11 @@ ul{
     .title{
       height: 26px;
       line-height: 26px;
+      display: flex;
+      input{
+        align-self: center;
+        margin-right: 10px;
+      }
     }
     button{
       height: 20px;
