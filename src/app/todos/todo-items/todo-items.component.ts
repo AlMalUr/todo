@@ -4,6 +4,7 @@ import {ActivatedRoute} from '@angular/router';
 
 import {TodoItem} from '../../core/models/todo-item';
 import {TodoItemsService} from '../../core/services/todo-items.service';
+import {TODO_ITEMS} from '../../core/mock/mock-todo-items';
 
 @Component({
   selector: 'app-todo-items',
@@ -11,9 +12,12 @@ import {TodoItemsService} from '../../core/services/todo-items.service';
   styleUrls: ['./todo-items.component.scss']
 })
 export class TodoItemsComponent implements OnInit {
-  route: ActivatedRoute;
+  route: string;
   todoItems: TodoItem[];
   constructor (private todoItemService: TodoItemsService, private activeRoute: ActivatedRoute) {
+  }
+  deleteTodoItemById(id) {
+    this.todoItemService.deleteTodoItemById(id);
   }
   ngOnInit() {
     this.todoItems = this.todoItemService.todoItems;

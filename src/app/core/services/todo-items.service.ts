@@ -8,4 +8,7 @@ import {TodoItem} from '../models/todo-item';
 })
 export class TodoItemsService {
   todoItems: TodoItem[] = TODO_ITEMS;
+  deleteTodoItemById(id) {
+      TODO_ITEMS.splice(TODO_ITEMS.findIndex(item => item.id === id), 1);
+  }
 }

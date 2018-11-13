@@ -6,10 +6,20 @@ ul{
   li{
     cursor: pointer;
     height: 26px;
-    span{
-      display: block;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #eee;
+    .title{
       height: 26px;
       line-height: 26px;
     }
+    button{
+      height: 20px;
+      align-self: center;
+    }
   }
+}
+:host{
+  width: 100%;
+  height: 100%;
 }

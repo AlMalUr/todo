@@ -1,5 +1,6 @@
 <ul>
   <li *ngFor="let item of (todoItems | filterTodoItems:route)">
-    <span>{{item.title}}</span>
+    <div class="title">{{item.title}}</div>
+    <button (click)="deleteTodoItemById(item.id)">delete</button>
   </li>
 </ul>
