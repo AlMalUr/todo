@@ -14,11 +14,13 @@ const routes: Routes = [
       },
       {
         path: 'active',
-        loadChildren: './todo-items/todo-items.module#TodoItemsModule'
+        loadChildren: './todo-items/todo-items.module#TodoItemsModule',
+        data: {title: 'active'}
       },
       {
         path: 'completed',
-        loadChildren: './todo-items/todo-items.module#TodoItemsModule'
+        loadChildren: './todo-items/todo-items.module#TodoItemsModule',
+        data: { title: 'complete' }
       }
     ]},
 
