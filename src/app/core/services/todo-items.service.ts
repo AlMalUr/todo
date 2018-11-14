@@ -10,10 +10,11 @@ export class TodoItemsService {
   todoItems: TodoItem[] = TODO_ITEMS;
   deleteTodoItemById(id) {
     TODO_ITEMS.splice(TODO_ITEMS.findIndex(item => item.id === id), 1);
-    console.log(TODO_ITEMS);
-    return TODO_ITEMS;
   }
   toggleTodoItemComplete(id) {
     TODO_ITEMS[TODO_ITEMS.findIndex(item => item.id === id)].complete = !TODO_ITEMS[TODO_ITEMS.findIndex(item => item.id === id)].complete;
+  }
+  addTodoItem(newTodoItem) {
+    TODO_ITEMS.push(newTodoItem);
   }
 }
