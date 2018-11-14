@@ -12,10 +12,16 @@ import {TodoItemsService} from '../../core/services/todo-items.service';
   ]
 })
 export class FooterComponent implements AfterContentChecked {
+
   count: number;
-  constructor (private todoItemService: TodoItemsService) {
+
+  constructor (
+    private todoItemService: TodoItemsService
+    ) {
   }
+
   ngAfterContentChecked() {
     this.count = this.todoItemService.todoItems.length;
   }
+
 }

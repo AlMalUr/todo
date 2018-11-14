@@ -11,18 +11,26 @@ import {TodoItemsService} from '../../core/services/todo-items.service';
   styleUrls: ['./todo-items.component.scss']
 })
 export class TodoItemsComponent implements OnInit {
-  route: string;
+
+  route: boolean | undefined;
   todoItems: TodoItem[];
-  constructor (private todoItemService: TodoItemsService, private activeRoute: ActivatedRoute) {
+
+  constructor (
+    private todoItemService: TodoItemsService,
+    private activeRoute: ActivatedRoute
+  ) {
   }
-  deleteTodoItemById(id) {
-    this.todoItemService.deleteTodoItemById(id);
+
+  deleteTodoItemById(id: number): void {
+    this.todoItems = this.todoItemService.deleteTodoItemById(id);
   }
-  toggleTodoItemComplete(id) {
+
+  toggleTodoItemComplete(id: number): void {
     this.todoItemService.toggleTodoItemComplete(id);
   }
+
   ngOnInit() {
     this.todoItems = this.todoItemService.todoItems;
-    this.route = this.activeRoute.snapshot.data.title;
+    this.route = this.activeRoute.snapshot.data.completed;
   }
 }

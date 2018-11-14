@@ -6,14 +6,18 @@ import {TodoItemsService} from '../../core/services/todo-items.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: [
-    './header.component.scss'
-  ]
+  styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  newTodoItem: TodoItem  = new TodoItem;
-  constructor(private todoItemsService: TodoItemsService) {}
-  addTodoItem(newTodoItem) {
+
+  newTodoItem: TodoItem  = new TodoItem();
+
+  constructor (
+    private todoItemsService: TodoItemsService
+  ) {
+  }
+
+  addTodoItem(newTodoItem: TodoItem) {
     this.todoItemsService.addTodoItem(newTodoItem);
     this.newTodoItem = new TodoItem();
   }

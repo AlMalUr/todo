@@ -7,14 +7,23 @@ import {TodoItem} from '../models/todo-item';
   providedIn: 'root'
 })
 export class TodoItemsService {
+
   todoItems: TodoItem[] = TODO_ITEMS;
-  deleteTodoItemById(id) {
-    TODO_ITEMS.splice(TODO_ITEMS.findIndex(item => item.id === id), 1);
+
+  deleteTodoItemById(id: number): TodoItem[] {
+    this.todoItems = this.todoItems.filter(item => item.id !== id);
+    return this.todoItems;
   }
-  toggleTodoItemComplete(id) {
-    TODO_ITEMS[TODO_ITEMS.findIndex(item => item.id === id)].complete = !TODO_ITEMS[TODO_ITEMS.findIndex(item => item.id === id)].complete;
+
+  toggleTodoItemComplete(id: number): void {
+    const i: TodoItem[] = this.todoItems;
+    const index: number = this.todoItems.findIndex(item => item.id === id);
+    i[index].complete = !i[index].complete;
   }
-  addTodoItem(newTodoItem) {
-    TODO_ITEMS.push(newTodoItem);
+
+  addTodoItem(newTodoItem: TodoItem): void {
+    this.todoItems.push(newTodoItem);
   }
+
+
 }

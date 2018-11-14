@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 
-import { TodosComponent } from './todos.component';
+import {TodosComponent} from './todos.component';
 
 
 const routes: Routes = [
@@ -15,12 +15,12 @@ const routes: Routes = [
       {
         path: 'active',
         loadChildren: './todo-items/todo-items.module#TodoItemsModule',
-        data: {title: 'active'}
+        data: {completed: false}
       },
       {
         path: 'completed',
         loadChildren: './todo-items/todo-items.module#TodoItemsModule',
-        data: { title: 'complete' }
+        data: {completed: true}
       }
     ]},
 
