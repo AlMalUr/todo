@@ -12,8 +12,11 @@ import {TodoItemsService} from '../../core/services/todo-items.service';
 })
 export class TodoItemsComponent implements OnInit {
 
-  route: boolean | undefined;
-  todoItems: TodoItem[];
+  completed: boolean | undefined;
+
+  get todoItems (): TodoItem[] {
+    return this.todoItemService.todoItems;
+  }
 
   constructor (
     private todoItemService: TodoItemsService,
@@ -22,7 +25,7 @@ export class TodoItemsComponent implements OnInit {
   }
 
   deleteTodoItemById(id: number): void {
-    this.todoItems = this.todoItemService.deleteTodoItemById(id);
+    this.todoItemService.deleteTodoItemById(id);
   }
 
   toggleTodoItemComplete(id: number): void {
@@ -30,7 +33,6 @@ export class TodoItemsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.todoItems = this.todoItemService.todoItems;
-    this.route = this.activeRoute.snapshot.data.completed;
+    this.completed = this.activeRoute.snapshot.data.completed;
   }
 }

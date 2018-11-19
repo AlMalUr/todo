@@ -6,11 +6,11 @@ import {Pipe, PipeTransform} from '@angular/core';
 })
 export class FilterTodoItemsPipe implements PipeTransform {
 
-  transform(items, route) {
-    if (route === undefined) {
+  transform(items, completed) {
+    if (completed === undefined) {
       return items;
     } else {
-      return items.filter(item => item.complete === route);
+      return items.filter(item => item.complete === completed);
     }
   }
 

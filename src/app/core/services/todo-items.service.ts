@@ -1,3 +1,4 @@
+import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 
 import {TODO_ITEMS} from '../mock/mock-todo-items';
@@ -10,19 +11,30 @@ export class TodoItemsService {
 
   todoItems: TodoItem[] = TODO_ITEMS;
 
-  deleteTodoItemById(id: number): TodoItem[] {
+  constructor(
+    private http: HttpClient
+  ) {
+  }
+
+  deleteTodoItemById(id: number): void {
     this.todoItems = this.todoItems.filter(item => item.id !== id);
-    return this.todoItems;
   }
 
   toggleTodoItemComplete(id: number): void {
-    const i: TodoItem[] = this.todoItems;
-    const index: number = this.todoItems.findIndex(item => item.id === id);
-    i[index].complete = !i[index].complete;
+    this.todoItems = this.todoItems.map(item => {
+        if (item.id === id) {
+          return Object.assign( {}, item, { complete: !item.complete});
+        }
+        return item;
+    });
+    // console.log(TODO_ITEMS);
+    // console.log(this.todoItems);
+
   }
 
   addTodoItem(newTodoItem: TodoItem): void {
-    this.todoItems.push(newTodoItem);
+    this.todoItems = [...this.todoItems, newTodoItem];
   }
 
 }
+
