@@ -1,19 +1,23 @@
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {Injectable} from '@angular/core';
+import {throwError} from 'rxjs';
+import {catchError, retry} from 'rxjs/operators';
 
-import {TODO_ITEMS} from '../mock/mock-todo-items';
 import {TodoItem} from '../models/todo-item';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodoItemsService {
 
-  todoItems: TodoItem[] = TODO_ITEMS;
+  todoItems: TodoItem[] = [];
+  dataUrl = 'http://localhost:3000/todo-items';
 
   constructor(
     private http: HttpClient
   ) {
+    this.fetchTodoItems();
   }
 
   deleteTodoItemById(id: number): void {
@@ -36,5 +40,26 @@ export class TodoItemsService {
     this.todoItems = [...this.todoItems, newTodoItem];
   }
 
+  private handleError (error: HttpErrorResponse) {
+    if (error.error instanceof ErrorEvent) {
+      console.error('An error occured: ', error.error.message);
+    } else {
+      console.error(
+        `Backend returned code ${error.status}, ` +
+        `body was: ${error.error}`);
+    }
+    return throwError(
+      'Something bad happened; please try again later.');
+  }
+
+  fetchTodoItems() {
+    return this.http.get<TodoItem[]>(this.dataUrl)
+      .pipe(
+        retry(3),
+        catchError(this.handleError)
+      )
+      .subscribe(items => {this.todoItems = items; });
+
+  }
 }
 
