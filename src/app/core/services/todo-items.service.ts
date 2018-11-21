@@ -20,24 +20,42 @@ export class TodoItemsService {
     this.fetchTodoItems();
   }
 
-  deleteTodoItemById(id: number): void {
-    this.todoItems = this.todoItems.filter(item => item.id !== id);
+  deleteTodoItemById(id: number) {
+
+    const url = `${this.dataUrl}/${id}`;
+
+    return this.http.delete<TodoItem>(url)
+      .pipe(
+        catchError(this.handleError)
+      )
+      .subscribe(() => {
+        this.todoItems = this.todoItems.filter(item => item.id !== id);
+      });
   }
 
-  toggleTodoItemComplete(id: number): void {
-    this.todoItems = this.todoItems.map(item => {
-        if (item.id === id) {
-          return Object.assign( {}, item, { complete: !item.complete});
-        }
-        return item;
-    });
-    // console.log(TODO_ITEMS);
-    // console.log(this.todoItems);
+  toggleTodoItemComplete(id: number) {
 
+    const url = `${this.dataUrl}/${id}`;
+    let changeItem: TodoItem = this.todoItems.find(item => item.id === id);
+    changeItem = Object.assign({}, changeItem, {complete: !changeItem.complete});
+
+    return this.http.put<TodoItem>(url, changeItem)
+      .pipe(
+        catchError(this.handleError)
+      )
+      .subscribe(itemToggle => {
+        this.todoItems = this.todoItems.map(item => {
+          return item.id === itemToggle.id ? itemToggle : item;
+        });
+      });
   }
 
-  addTodoItem(newTodoItem: TodoItem): void {
-    this.todoItems = [...this.todoItems, newTodoItem];
+  addTodoItem(newTodoItem: TodoItem) {
+    return this.http.post<TodoItem>(this.dataUrl, newTodoItem)
+      .pipe(
+        catchError(this.handleError)
+      )
+      .subscribe(item => {this.todoItems = [...this.todoItems, item]; } );
   }
 
   private handleError (error: HttpErrorResponse) {
@@ -59,7 +77,11 @@ export class TodoItemsService {
         catchError(this.handleError)
       )
       .subscribe(items => {this.todoItems = items; });
-
   }
 }
+
+
+
+
+
 
