@@ -12,7 +12,7 @@ import {TodoItem} from '../models/todo-item';
 export class TodoItemsService {
 
   todoItems: TodoItem[] = [];
-  dataUrl = 'http://localhost:3000/todo-items';
+  dataUrl = 'todo-items';
 
   constructor(
     private http: HttpClient

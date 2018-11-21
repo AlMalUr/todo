@@ -1,10 +1,12 @@
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {NgModule} from '@angular/core';
-import {HttpClientModule} from '@angular/common/http';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {CoreModule} from './core/core.module';
+import {httpInterceptorProviders} from './core/interceptors';
+import {ApiUrlInterceptor} from './core/interceptors/api-url.interceptor';
 
 
 
@@ -18,7 +20,9 @@ import {CoreModule} from './core/core.module';
     CoreModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    httpInterceptorProviders
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
