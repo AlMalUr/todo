@@ -1,5 +1,7 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Observable} from 'rxjs';
 
+import {TodoItem} from '../../core/models/todo-item';
 import {TodoItemsService} from '../../core/services/todo-items.service';
 
 @Component({
@@ -7,15 +9,22 @@ import {TodoItemsService} from '../../core/services/todo-items.service';
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss']
 })
-export class FooterComponent {
+export class FooterComponent implements OnInit {
 
-  get count(): number {
-    return this.todoItemService.todoItems.length;
-  }
+  todoItems$: Observable<TodoItem[]>;
+  count: number;
 
   constructor(
     private todoItemService: TodoItemsService
   ) {
   }
 
+  ngOnInit() {
+    this.todoItems$ = this.todoItemService.todoItems$;
+
+    this.todoItems$
+    .subscribe(todoItems => {
+      this.count = todoItems.length;
+    });
+  }
 }

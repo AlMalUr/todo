@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-
+import { Observable } from 'rxjs';
 
 import {TodoItem} from '../../core/models/todo-item';
 import {TodoItemsService} from '../../core/services/todo-items.service';
@@ -13,10 +13,8 @@ import {TodoItemsService} from '../../core/services/todo-items.service';
 export class TodoItemsComponent implements OnInit {
 
   completed: boolean | undefined;
-
-  get todoItems (): TodoItem[] {
-    return this.todoItemService.todoItems;
-  }
+  todoItems: TodoItem[];
+  todoItems$: Observable<TodoItem[]>;
 
   constructor (
     private todoItemService: TodoItemsService,
@@ -34,5 +32,10 @@ export class TodoItemsComponent implements OnInit {
 
   ngOnInit() {
     this.completed = this.activeRoute.snapshot.data.completed;
+    this.todoItems$ = this.todoItemService.todoItems$;
+    this.todoItems$
+      .subscribe( todoItems =>
+        this.todoItems = todoItems
+      );
   }
 }
