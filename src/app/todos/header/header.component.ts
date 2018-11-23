@@ -10,9 +10,9 @@ import {TodoItemsService} from '../../core/services/todo-items.service';
 })
 export class HeaderComponent {
 
-  newTodoItem: TodoItem  = new TodoItem();
+  newTodoItem: TodoItem = new TodoItem();
 
-  constructor (
+  constructor(
     private todoItemsService: TodoItemsService
   ) {
   }

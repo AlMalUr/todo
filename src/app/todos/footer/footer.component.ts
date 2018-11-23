@@ -13,9 +13,9 @@ export class FooterComponent {
     return this.todoItemService.todoItems.length;
   }
 
-  constructor (
+  constructor(
     private todoItemService: TodoItemsService
-    ) {
+  ) {
   }
 
 }

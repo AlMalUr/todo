@@ -1,10 +1,12 @@
-import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 
+import {httpInterceptorProviders} from './interceptors';
+import {TodoItemsService} from './services/todo-items.service';
+
 @NgModule({
-  imports: [
-    CommonModule
-  ],
-  declarations: []
+  providers: [
+    httpInterceptorProviders,
+    TodoItemsService
+  ]
 })
 export class CoreModule { }
