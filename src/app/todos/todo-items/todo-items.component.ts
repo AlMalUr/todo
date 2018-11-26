@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { combineLatest, map } from 'rxjs/operators';
 
-import {TodoItem} from '../../core/models/todo-item';
-import {TodoItemsService} from '../../core/services/todo-items.service';
+import { TodoItem } from '../../core/models/todo-item';
+import { TodoItemsService } from '../../core/services/todo-items.service';
 
 @Component({
   selector: 'app-todo-items',
@@ -12,13 +13,12 @@ import {TodoItemsService} from '../../core/services/todo-items.service';
 })
 export class TodoItemsComponent implements OnInit {
 
-  completed: boolean | undefined;
   todoItems: TodoItem[];
   todoItems$: Observable<TodoItem[]>;
 
-  constructor (
+  constructor(
     private todoItemService: TodoItemsService,
-    private activeRoute: ActivatedRoute
+    private route: ActivatedRoute
   ) {
   }
 
@@ -31,11 +31,20 @@ export class TodoItemsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.completed = this.activeRoute.snapshot.data.completed;
     this.todoItems$ = this.todoItemService.todoItems$;
     this.todoItems$
-      .subscribe( todoItems =>
-        this.todoItems = todoItems
-      );
+    .pipe(
+      combineLatest(this.route.data),
+      map(([todoItems, route]) => {
+        if (route.completed === undefined) {
+          return todoItems;
+        } else {
+          return todoItems.filter(item => item.complete === route.completed);
+        }
+      })
+    )
+    .subscribe(todoItems =>
+      this.todoItems = todoItems
+    );
   }
 }
