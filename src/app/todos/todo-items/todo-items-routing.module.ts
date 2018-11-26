@@ -1,13 +1,20 @@
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
-import {TodoItemsComponent} from './todo-items.component';
+import { TodoItemsResolverService } from '../../core/services/todo-items-resolver.service';
+
+import { TodoItemsComponent } from './todo-items.component';
 
 const routes: Routes = [
-  {path: '', component: TodoItemsComponent}];
+  {
+    path: '',
+    component: TodoItemsComponent,
+    resolve: {item: TodoItemsResolverService}
+  }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class TodoItemsRoutingModule { }
+export class TodoItemsRoutingModule {
+}

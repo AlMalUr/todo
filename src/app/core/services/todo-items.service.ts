@@ -33,8 +33,6 @@ export class TodoItemsService {
       this.todoItems$.next(items);
     });
 
-    this.fetchTodoItems$.next();
-
     this.toggleTodoItemComplete$
     .pipe(
       withLatestFrom(this.todoItems$),
@@ -91,6 +89,10 @@ export class TodoItemsService {
   addTodoItem(newTodoItem: TodoItem) {
     this.addTodoItem$
     .next(newTodoItem);
+  }
+
+  fetchTodoItems(): any {
+    this.fetchTodoItems$.next();
   }
 
   private handleError(error: HttpErrorResponse) {
