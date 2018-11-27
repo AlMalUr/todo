@@ -1,6 +1,6 @@
 <div class="footer">
   <div class="items-left">
-    <span>{{count}}</span> items left
+    <span>{{(todoItems$ | async).length}}</span> items left
   </div>
   <ul>
     <li routerLink="/">All</li>

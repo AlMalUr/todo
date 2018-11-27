@@ -83,7 +83,8 @@ export class TodoItemsService {
   }
 
   toggleTodoItemComplete(id: number) {
-    this.toggleTodoItemComplete$.next(id);
+    this.toggleTodoItemComplete$
+    .next(id);
   }
 
   addTodoItem(newTodoItem: TodoItem) {
@@ -91,8 +92,9 @@ export class TodoItemsService {
     .next(newTodoItem);
   }
 
-  fetchTodoItems(): any {
-    this.fetchTodoItems$.next();
+  fetchTodoItems() {
+    this.fetchTodoItems$
+    .next();
   }
 
   private handleError(error: HttpErrorResponse) {

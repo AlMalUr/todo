@@ -9,7 +9,7 @@ const routes: Routes = [
   {
     path: '',
     component: TodoItemsComponent,
-    resolve: {item: TodoItemsResolverService}
+    resolve: { item: TodoItemsResolverService }
   }];
 
 @NgModule({

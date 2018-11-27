@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
-import { combineLatest, map } from 'rxjs/operators';
+import { combineLatest, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { TodoItem } from '../../core/models/todo-item';
 import { TodoItemsService } from '../../core/services/todo-items.service';
@@ -31,10 +31,8 @@ export class TodoItemsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.todoItems$ = this.todoItemService.todoItems$;
-    this.todoItems$
+    this.todoItems$ = combineLatest(this.todoItemService.todoItems$, this.route.data)
     .pipe(
-      combineLatest(this.route.data),
       map(([todoItems, route]) => {
         if (route.completed === undefined) {
           return todoItems;
@@ -42,9 +40,6 @@ export class TodoItemsComponent implements OnInit {
           return todoItems.filter(item => item.complete === route.completed);
         }
       })
-    )
-    .subscribe(todoItems =>
-      this.todoItems = todoItems
     );
   }
 }

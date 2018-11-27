@@ -12,7 +12,6 @@ import {TodoItemsService} from '../../core/services/todo-items.service';
 export class FooterComponent implements OnInit {
 
   todoItems$: Observable<TodoItem[]>;
-  count: number;
 
   constructor(
     private todoItemService: TodoItemsService
@@ -21,11 +20,6 @@ export class FooterComponent implements OnInit {
 
   ngOnInit() {
     this.todoItems$ = this.todoItemService.todoItems$;
-
-    this.todoItems$
-    .subscribe(todoItems => {
-      this.count = todoItems.length;
-    });
   }
 }
 
