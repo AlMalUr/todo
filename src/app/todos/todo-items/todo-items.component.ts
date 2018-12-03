@@ -13,7 +13,6 @@ import { TodoItemsService } from '../../core/services/todo-items.service';
 })
 export class TodoItemsComponent implements OnInit {
 
-  todoItems: TodoItem[];
   todoItems$: Observable<TodoItem[]>;
 
   constructor(

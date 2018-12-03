@@ -1,10 +1,13 @@
-import {HttpClientModule} from '@angular/common/http';
-import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { NgxsModule } from '@ngxs/store';
 
-import {AppRoutingModule} from './app-routing.module';
-import {AppComponent} from './app.component';
-import {CoreModule} from './core/core.module';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { CoreModule } from './core/core.module';
+import { TodoItemsState } from './ngxs/todo-items/todo-items.state';
 
 @NgModule({
   declarations: [
@@ -14,7 +17,9 @@ import {CoreModule} from './core/core.module';
     BrowserModule,
     AppRoutingModule,
     CoreModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxsModule.forRoot([TodoItemsState]),
+    NgxsReduxDevtoolsPluginModule.forRoot()
   ],
   bootstrap: [AppComponent]
 })
