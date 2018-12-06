@@ -2,11 +2,13 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 
 import {TodosComponent} from './todos.component';
+import { TodoItemsResolverService } from '../core/services/todo-items-resolver.service';
 
 
 const routes: Routes = [
   {path: '',
     component: TodosComponent,
+    resolve: { item: TodoItemsResolverService },
     children: [
       {
         path: '',

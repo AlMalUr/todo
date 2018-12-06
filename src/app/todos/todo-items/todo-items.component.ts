@@ -14,6 +14,7 @@ import { TodoItemsService } from '../../core/services/todo-items.service';
 export class TodoItemsComponent implements OnInit {
 
   todoItems$: Observable<TodoItem[]>;
+  todoItemsCount$: Observable<number>;
 
   constructor(
     private todoItemService: TodoItemsService,
@@ -30,6 +31,7 @@ export class TodoItemsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.todoItemsCount$ = this.todoItemService.todoItemsCount$;
     this.todoItems$ = combineLatest(this.todoItemService.todoItems$, this.route.data)
     .pipe(
       map(([todoItems, route]) => {

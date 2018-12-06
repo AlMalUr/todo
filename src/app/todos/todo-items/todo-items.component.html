@@ -1,4 +1,5 @@
 <ul>
+  <li *ngIf="!(todoItemsCount$ | async)">No data</li>
   <li *ngFor="let item of (todoItems$ | async)">
     <div class="title">
       <input
