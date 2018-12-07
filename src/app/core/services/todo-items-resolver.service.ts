@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Resolve, Router } from '@angular/router';
 import { Actions, ofActionDispatched } from '@ngxs/store';
-import { delay, map, take } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 
 import { FetchTodoItemsFailed, FetchTodoItemsSuccess } from '../../ngxs/todo-items/todo-items.actions';
 
@@ -33,8 +33,7 @@ export class TodoItemsResolverService implements Resolve<any> {
           }
         }
       ),
-      take(1),
-      delay(1000)
+      take(1)
     );
   }
 }

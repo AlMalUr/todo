@@ -1,6 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsModule } from '@ngxs/store';
 
@@ -21,7 +22,8 @@ import { TodoItemsState } from './ngxs/todo-items/todo-items.state';
     CoreModule,
     HttpClientModule,
     NgxsModule.forRoot([TodoItemsState]),
-    NgxsReduxDevtoolsPluginModule.forRoot()
+    NgxsReduxDevtoolsPluginModule.forRoot(),
+    BrowserAnimationsModule
   ],
   bootstrap: [AppComponent]
 })

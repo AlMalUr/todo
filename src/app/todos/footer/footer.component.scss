@@ -1,7 +1,10 @@
 .footer{
   display: flex;
-  border: 1px solid #222;
-  padding: 16px 20px;
+  border: 2px solid #999;
+  border-top: none;
+  border-radius: 0 0 5px 5px;
+  padding: 10px 20px 16px;
+  background: linear-gradient(rgba(250,240,230,0.5), rgba(50,40,30,.3));
   >span {
     margin: auto;
   }
@@ -17,4 +20,17 @@
       cursor: pointer;
     }
   }
+  .items-left{
+    min-width: 100px;
+    padding-top: 16px;
+    color: #999;
+  }
 }
+
+.mat-tab-link{
+  min-width: auto;
+  .mat-ink-bar{
+    background-color: #fff;
+  }
+}
+

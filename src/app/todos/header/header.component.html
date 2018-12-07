@@ -1,7 +1,9 @@
 <div class="header">
-  <input
-    type="text"
-    placeholder="What needs to be done?"
-    [(ngModel)]="newTodoItem.title"
-    (keydown.enter)="addTodoItem(newTodoItem)">
+  <mat-form-field>
+    <input matInput
+      type="text"
+      placeholder="What needs to be done?"
+      [(ngModel)]="newTodoItem.title"
+      (keydown.enter)="addTodoItem(newTodoItem)">
+  </mat-form-field>
 </div>

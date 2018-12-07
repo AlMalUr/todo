@@ -1,20 +1,22 @@
-import {CommonModule} from '@angular/common';
-import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
-import {SharedModule} from '../../shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 
-import {HeaderComponent} from './header.component';
-
+import { HeaderComponent } from './header.component';
+import { MatInputModule } from '@angular/material';
 
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    MatInputModule
   ],
   exports: [HeaderComponent],
   declarations: [HeaderComponent]
 })
-export class HeaderModule { }
+export class HeaderModule {
+}

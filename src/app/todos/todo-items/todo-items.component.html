@@ -1,13 +1,18 @@
 <ul>
-  <li *ngIf="!(todoItemsCount$ | async)">No data</li>
+  <div *ngIf="!(todoItemsCount$ | async)">No data</div>
   <li *ngFor="let item of (todoItems$ | async)">
     <div class="title">
-      <input
-        type="checkbox"
+      <mat-checkbox color="primary"
         [checked]="item.complete"
-        (click) = "toggleTodoItemComplete(item.id)">
+        (click) = "toggleTodoItemComplete(item.id)"></mat-checkbox>
       {{item.title}}
     </div>
-    <button (click)="deleteTodoItemById(item.id)">delete</button>
+    <button
+      mat-raised-button
+      color="accent"
+      (click)="deleteTodoItemById(item.id)"
+    >
+      delete
+    </button>
   </li>
 </ul>

@@ -2,9 +2,34 @@
   <div class="items-left">
     <span>{{todoItemsCount$ | async}}</span> items left
   </div>
-  <ul>
-    <li routerLink="/">All</li>
-    <li routerLink="/active">Active</li>
-    <li routerLink="/completed">Completed</li>
-  </ul>
+  <nav mat-tab-nav-bar>
+    <a
+      mat-tab-link
+      routerLink=""
+      routerLinkActive="mat-tab-link-active"
+      #all = "routerLinkActive"
+      [active] = "all.isActive"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      All
+    </a>
+    <a
+      mat-tab-link
+      routerLink="/active"
+      routerLinkActive="mat-tab-link-active"
+      #active = "routerLinkActive"
+      [active] = "active.isActive"
+    >
+      Active
+    </a>
+    <a
+      mat-tab-link
+      routerLink="/completed"
+      routerLinkActive="mat-tab-link-active"
+      #completed = "routerLinkActive"
+      [active] = "completed.isActive"
+    >
+      Completed
+    </a>
+  </nav>
 </div>
