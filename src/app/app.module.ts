@@ -17,13 +17,13 @@ import { TodoItemsState } from './ngxs/todo-items/todo-items.state';
     AppComponent
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
+    BrowserModule,
     CoreModule,
     HttpClientModule,
     NgxsModule.forRoot([TodoItemsState]),
     NgxsReduxDevtoolsPluginModule.forRoot(),
-    BrowserAnimationsModule
   ],
   bootstrap: [AppComponent]
 })

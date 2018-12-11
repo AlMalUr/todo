@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatTabsModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
 
 import { SharedModule } from '../../shared/shared.module';
@@ -11,8 +10,7 @@ import { FooterComponent } from './footer.component';
   imports: [
     CommonModule,
     RouterModule,
-    SharedModule,
-    MatTabsModule
+    SharedModule
   ],
   exports: [
     FooterComponent

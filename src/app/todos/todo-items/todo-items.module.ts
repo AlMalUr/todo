@@ -1,6 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import { MAT_CHECKBOX_CLICK_ACTION, MatButtonModule, MatCheckboxModule } from '@angular/material';
+import { MAT_CHECKBOX_CLICK_ACTION } from '@angular/material';
 
 import {SharedModule} from '../../shared/shared.module';
 
@@ -11,9 +11,7 @@ import {TodoItemsComponent} from './todo-items.component';
   imports: [
     CommonModule,
     TodoItemsRoutingModule,
-    SharedModule,
-    MatButtonModule,
-    MatCheckboxModule
+    SharedModule
   ],
   declarations: [TodoItemsComponent],
   providers: [
